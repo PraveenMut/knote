@@ -27,10 +27,10 @@ spec:
         app: knote
     spec:
       containers:
-        - name: app
+        - name: knote
           image: 24e4620c8129
           ports:
-           - containerPort: 3000
+            - containerPort: 3000
           env:
             - name: MONGO_URL
               value: mongodb://mongo:27017/dev
