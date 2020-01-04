@@ -20,7 +20,7 @@ mongo-run: initialise_knote_network
 .PHONY: mongo-run
 
 app-run: initialise_knote_network
-	docker run --name=knote --network=knote -p 3000:3000 -e MONGO_URL=mongodb://mongo:27017/dev knote
+	docker run --name=knote --network=knote --rm -p 3000:3000 -e MONGO_URL=mongodb://mongo:27017/dev -d knote
 .PHONY: app-run
 
 run-all:
