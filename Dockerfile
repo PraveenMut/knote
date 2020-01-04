@@ -1,4 +1,4 @@
-FROM docker-registry.hq.local/ioof/rhel7_node012:latest
+FROM node:12.0-slim
 COPY . .
 RUN npm install
 CMD ["npm", "start"]
