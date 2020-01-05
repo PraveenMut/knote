@@ -12,7 +12,7 @@ const minio = require('minio');
 const app = express();
 const port = process.env.PORT || 3000;
 const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/dev';
-const minioHost = process.env.MINO_HOST || '127.0.0.1';
+const minioHost = process.env.MINIO_HOST || 'localhost';
 const minioBucket = 'image-storage';
 
 // initalise MinIO
@@ -31,6 +31,7 @@ const initialiseMinIO = async () => {
       if(!(await client.bucketExists(minioBucket))) {
         await client.makeBucket(minioBucket);
       };
+      success = true;
     } catch(e) {
       console.log('Could not load MinIO, waiting for 1 second before reattempt...\nException details:', e);
       await new Promise(resolve => setTimeout(resolve, 1000))
