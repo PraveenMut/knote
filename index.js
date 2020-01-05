@@ -86,7 +86,7 @@ const start = async () => {
         res.redirect('/');
       } else if (req.body.upload && req.file) {
         await minio.putObject(minioBucket, req.file.originalname, req.file.buffer);
-        const link = `/img/${encodeURIComponent(req.file.filename)}`;
+        const link = `/img/${encodeURIComponent(req.file.originalname)}`;
         res.render('index', {
           content: `${req.body.description} ![](${link})`,
           notes: await retrieveNotes(db),
